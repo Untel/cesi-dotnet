@@ -21,14 +21,10 @@ namespace CESICommerce.Controllers
         {
             IQueryable<Product> products = this.Repository.Products.Skip((page > 0 ? (page - 1) * this.countPerPage : 0)).Take(countPerPage);
 
-
-            // Console.WriteLine("Data : max : " + maxPage + " count : " + countPerPage + " skip : " + (page * this.countPerPage) + " page : " + page);
-
             //ViewData["products"] = products;
             //ViewData["countPerPage"] = countPerPage;
             //ViewData["page"] = page;
             //ViewData["maxPage"] = maxPage;
-
 
             return View("list", new ProductListViewModel(products, countPerPage, page, this.Repository.Products.Count()));
         }

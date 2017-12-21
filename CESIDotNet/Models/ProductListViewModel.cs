@@ -24,6 +24,7 @@ namespace CESICommerce.Models
         public int maxPage {
             get {
                 decimal maxTmp = (this.count / this.countPerPage) + 1;
+               
                 return (int) Math.Floor(maxTmp);
             }
         }
