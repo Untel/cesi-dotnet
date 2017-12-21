@@ -1,0 +1,67 @@
+﻿@using CESICommerce.Models;
+@model Product
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="container">
+
+		<a href="javascript:history.back()" class="btn btn-info">Back</a>
+
+		<form class="row col-12">
+			<div class="form-group col-3">
+				<label for="productId">Product ID</label>
+				<input type="number" 
+					   id="productId"
+					   name="productId"
+					   class="form-control" 
+					   value="@Model.ProductID"
+					   disabled />
+			</div>
+			<div class="form-group col-9">
+				<label for="name">Name</label>
+				<input type="text"
+					   id="name"
+					   name="name"
+					   class="form-control"
+					   value="@Model.Name"
+					   disabled />
+			</div>
+			<div class="form-group col-12">
+				<label for="description">Description</label>
+				<textarea type="text"
+						  id="description"
+						  name="description"
+						  class="form-control"
+						  style="overflow: auto"
+						  disabled>@Model.Description</textarea>
+			</div>
+			<div class="form-group col-6">
+				<label for="price">Price</label>
+				<div class="input-group">
+					<input type="text"
+						   id="price"
+						   name="price"
+						   style="text-align: right"
+						   class="form-control"
+						   value="@Model.Price"
+						   disabled />
+					<span class="input-group-addon">€</span>
+				</div>
+			</div>
+			<div class="form-group col-6">
+				<label for="category">Category</label>
+				<input type="text"
+					   id="category"
+					   name="category"
+					   class="form-control"
+					   value="@Model.Category"
+					   disabled />
+			</div>
+
+		</form>
+</div>
+</body>
+</html>
