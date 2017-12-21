@@ -45,6 +45,9 @@ namespace CESICommerce.Models
                 //Je sauvegarde le contexte Base de données
                 context.SaveChanges();
             }
+            //context.Products.AddRange(new Product { Name = "lol", Description = "lel", Price = 41, Category = "hello" });
+            //context.SaveChanges();
+
         }
     }
 }

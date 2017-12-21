@@ -1,54 +1,55 @@
 ﻿@using CESICommerce.Models;
-
+@model ProductListViewModel;
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title></title>
+    <title></title>
 </head>
 <body>
-	<div class="container">
+    <div class="container">
 
-		<h2>Products</h2>
+        <h2>Products</h2>
 
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th scope="col">Product ID</th>
-					<th scope="col">Name</th>
-					<th scope="col">Description</th>
-					<th scope="col">Price</th>
-					<th scope="col">Category</th>
-					<th scope="col">See</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach (Product p in (IQueryable<Product>) ViewData["products"])
-				{
-				<tr>
-					<th scope="row">@p.ProductID</th>
-					<td>@p.Name</td>
-					<td>@p.Description</td>
-					<td>@p.Price €</td>
-					<td>@p.Category</td>
-					<td><a href="/product/@p.ProductID">Detail</a></td>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Product ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">See</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Product p in Model.products)
+                {
+                    <tr>
+                        <th scope="row">@p.ProductID</th>
+                        <td>@p.Name</td>
+                        <td>@p.Description</td>
+                        <td>@p.Price €</td>
+                        <td>@p.Category</td>
+                        <td><a href="/product/@p.ProductID">Detail</a></td>
 
-				</tr>
-				}
+                    </tr>
+                }
 
-			</tbody>
-		</table>
+            </tbody>
+        </table>
 
-		<div class="btn-group">
-			@for (int i = 1; i <= (int) ViewData["maxPage"]; i++) {
-				@if (i == (int) ViewData["page"])
-				{
-					<a href="" class="btn btn-default" style="color: red">@i</a>
-				}
-				else
-				{
-					<a href="/@i" class="btn btn-default">@i</a>
-				}
-			}
-		</div>
-	</div>
+        <div class="btn-group">
+            @for (int i = 1; i <= Model.pagination.maxPage; i++)
+            {
+                @if (i == Model.pagination.page)
+                {
+                    <a href="" class="btn btn-default" style="color: red">@i</a>
+                }
+                else
+                {
+                    <a href="/@i" class="btn btn-default">@i</a>
+                }
+            }
+        </div>
+    </div>
 </body>
 </html>

@@ -20,17 +20,17 @@ namespace CESICommerce.Controllers
         public ViewResult List(int page)
         {
             IQueryable<Product> products = this.Repository.Products.Skip((page > 0 ? (page - 1) * this.countPerPage : 0)).Take(countPerPage);
-            decimal maxTmp = this.Repository.Products.Count() / countPerPage;
-            int maxPage = (int) Math.Floor(maxTmp) + 1;
+
 
             // Console.WriteLine("Data : max : " + maxPage + " count : " + countPerPage + " skip : " + (page * this.countPerPage) + " page : " + page);
 
-            ViewData["products"] = products;
-            ViewData["countPerPage"] = countPerPage;
-            ViewData["page"] = page;
-            ViewData["maxPage"] = maxPage;
+            //ViewData["products"] = products;
+            //ViewData["countPerPage"] = countPerPage;
+            //ViewData["page"] = page;
+            //ViewData["maxPage"] = maxPage;
 
-            return View("list");
+
+            return View("list", new ProductListViewModel(products, countPerPage, page, this.Repository.Products.Count()));
         }
 
         public ViewResult Product(int id)
